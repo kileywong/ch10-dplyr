@@ -41,8 +41,13 @@ mean(flights$gain_in_air, na.rm = TRUE)
 # origin, destination, and the "gain_in_air" column you just created
 to_sea <- flights %>% select(origin, dest, gain_in_air) %>% filter(dest == 'SEA')
 
+#jfk_sea <- flights %<%
+#  filter(origin == "JFK", dest == 'SEA') %<%
+#  select(origin, dest, time_gained)
+
 # On average, did flights to SeaTac gain or loose time?
 mean(to_sea$gain_in_air, na.rm = TRUE)
+#summarize(to_sea, mean = mean(time_gained, na.rm = T))
 
 # Consider flights from JFK to SEA. What was the average, min, and max air time
 # of those flights? Bonus: use pipes to answer this question in one statement
@@ -53,3 +58,11 @@ filter(flights, origin=="JFK", dest=="SEA") %>%
     max_air_time = max(air_time, na.rm = TRUE),
     min_air_time = min(air_time, na.rm = TRUE)
   )
+
+#summary <- flights %<%
+#  filter(flights, origin=="JFK", dest=="SEA") %>%
+#  summarise(
+#    avg_time = mean(time_gained, na.rm = T),
+#    min_time = min(time_gained, na.rm = T),
+#    max_time = max(time_gained, na.rm = T),
+#  )
