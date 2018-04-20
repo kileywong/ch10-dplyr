@@ -26,7 +26,7 @@ plot(dep_delay_by_month)
 # You can use the `head()` function to view just the first few rows
 arr_delay_by_month <- flights %>%
   group_by(dest) %>%
-  summarise(delay = mean(arr_delay, na.rm=TRUE)) %>%
+  summarise(delay = mean(arr_delay, na.rm = TRUE)) %>%
   arrange(-delay)
 head(arr_delay_by_month)
 
@@ -40,3 +40,8 @@ city_fasted_speed <- flights %>%
   summarise(avg_speed = mean(speed, na.rm = TRUE)) %>%
   filter(avg_speed == max(avg_speed, na.rm = TRUE))
 city_fasted_speed
+
+
+joined <- left_join(larges_arrival_dealy, airports) %<%
+  filter(avg_dealy == min(avg_delay, na.rm = T))
+largest_arrival_delay
